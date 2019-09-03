@@ -1,0 +1,6 @@
+framework module Pods_BlueAR_BodyDetection {
+  umbrella header "Pods-BlueAR-BodyDetection-umbrella.h"
+
+  export *
+  module * { export * }
+}

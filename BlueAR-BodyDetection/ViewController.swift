@@ -10,12 +10,15 @@ import UIKit
 import RealityKit
 import ARKit
 import Combine
+import Firebase
+import McPicker
 
 class ViewController: UIViewController, ARSessionDelegate {
     
     @IBOutlet var arView: ARView!
     @IBOutlet weak var loadCaptureButton: RoundedButton!
     @IBOutlet weak var captureButton: RoundedButton!
+    @IBOutlet weak var animationsButton: UIButton!
     
     // The 3D character to display.
     var character: BodyTrackedEntity?
@@ -48,6 +51,7 @@ class ViewController: UIViewController, ARSessionDelegate {
         arView.scene.addAnchor(characterAnchor)
         
         loadCaptureButton.isEnabled = false
+        animationsButton.isHidden = true
         
         // Asynchronously load the 3D character.
         var cancellable: AnyCancellable? = nil
@@ -67,7 +71,11 @@ class ViewController: UIViewController, ARSessionDelegate {
                 print("Error: Unable to load model as BodyTrackedEntity")
             }
         })
+        
+        getAnimationDataFromFirebaseDB()
     }
+    
+    // MARK: - ARSessionDelegateMethods
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         // if the character does not play the captured data, it continues to move with the human
@@ -115,7 +123,23 @@ class ViewController: UIViewController, ARSessionDelegate {
     @IBAction func loadCaptureButtonTapped(_ button: UIButton) {
         loadCapturedData()
     }
-
+    
+    @IBAction func animationsButtonTapped(_ sender: Any) {
+        // Show animations list picker
+        let mcPicker = McPicker(data: [self.downloadedAnimations.keys.compactMap { $0 }])
+        
+        let customLabel = UILabel()
+        customLabel.textAlignment = .center
+        customLabel.textColor = .black
+        mcPicker.label = customLabel // Set custom label
+        
+        mcPicker.show { (selections: [Int : String]) in
+            if let id = selections[0] {
+                self.loadCapturedDataFromURL(id: id, url: self.downloadedAnimations[id] ?? "")
+            }
+        }
+    }
+    
     // MARK: - Saving and Loading captured data
     
     lazy var mapSaveURL: URL = {
@@ -152,26 +176,40 @@ class ViewController: UIViewController, ARSessionDelegate {
         }
     }
     
+    func loadCapturedDataFromURL(id:String, url: String) {
+        
+        DownloadManager.sharedInstance.getAnimationDataFromURL(id: id, modelURL: url) { (downloadedData) in
+            guard let data = downloadedData else {return}
+            
+            do {
+                let screenCentre : CGPoint = CGPoint(x: self.arView.bounds.midX, y: self.arView.bounds.midY)
+                
+                let arHitTestResults : [ARHitTestResult] = self.arView.hitTest(screenCentre, types: [.featurePoint])
+                
+                if let closestResult = arHitTestResults.first {
+                    // Get Coordinates of HitTest
+                    let transform : matrix_float4x4 = closestResult.worldTransform
+                    
+                    // Set up some properties
+                    self.character?.position = simd_make_float3(transform.columns.3)
+                }
+                
+                let map = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [ARBodyAnchor]
+                self.frame = 0
+                self.capturedAnchorDataArray = map
+                self.playCapturedAnimation()
+            } catch {
+                print("Can't unarchive ARBodyAnchor from file data: \(error)")
+            }
+        }
+    }
+    
     func loadCapturedData(){
         guard let data = mapDataFromFile
             else { print("Map data should already be verified to exist before Load button is enabled."); return; }
         do {
-            
-            let screenCentre : CGPoint = CGPoint(x: self.arView.bounds.midX, y: self.arView.bounds.midY)
-            
-            let arHitTestResults : [ARHitTestResult] = self.arView.hitTest(screenCentre, types: [.featurePoint])
-            
-            if let closestResult = arHitTestResults.first {
-                // Get Coordinates of HitTest
-                let transform : matrix_float4x4 = closestResult.worldTransform
-                
-                // Set up some properties
-                character?.position = simd_make_float3(transform.columns.3)
-            }
-            
-            let map = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [ARBodyAnchor]
+            self.capturedAnchorDataArray = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [ARBodyAnchor]
             self.frame = 0
-            self.capturedAnchorDataArray = map
             self.playCapturedAnimation()
         } catch {
             print("Can't unarchive ARBodyAnchor from file data: \(error)")
@@ -200,7 +238,7 @@ class ViewController: UIViewController, ARSessionDelegate {
     func playCapturedAnimation() {
         isCapturePlay = true
         capturePlayTimer?.invalidate()
-        capturePlayTimer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(playFrame), userInfo: nil, repeats: true)
+        capturePlayTimer = Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(playFrame), userInfo: nil, repeats: true)
     }
     
     @objc func playFrame() {
@@ -230,5 +268,30 @@ class ViewController: UIViewController, ARSessionDelegate {
             // 2. the character was loaded.
             characterAnchor.addChild(character)
         }
+    }
+    
+    // MARK: - Get animation data from Firebase DB
+    
+    var downloadedAnimations: [String:String] = [:]
+    
+    func getAnimationDataFromFirebaseDB(){
+        Database.database().reference().child("CharacterAnimations").observe(.value, with: { (snapshot) in
+            if snapshot.exists() {
+                
+                guard let objects = snapshot.value as? [String : AnyObject] else {return}
+                self.animationsButton.isHidden = false
+                
+                for object in objects {
+                    guard let values = object.value as? [String : String] else {return}
+                    
+                    guard let id = values["id"] else {return}
+                    guard let url = values["animationURL"] else {return}
+                    
+                    self.downloadedAnimations.updateValue(url, forKey: id)
+                }
+            }else {
+                
+            }
+        })
     }
 }

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185320BB31B111CA5DE526CB /* Pods_BlueAR_BodyDetection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CFB6AA0CF3B514292A336F1 /* Pods_BlueAR_BodyDetection.framework */; };
 		2ECA9FC1231EAEF800846CA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FC0231EAEF800846CA2 /* AppDelegate.swift */; };
 		2ECA9FC3231EAEF800846CA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FC2231EAEF800846CA2 /* ViewController.swift */; };
 		2ECA9FC8231EAEF800846CA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECA9FC6231EAEF800846CA2 /* Main.storyboard */; };
@@ -14,6 +15,9 @@
 		2ECA9FCD231EAEF900846CA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECA9FCB231EAEF900846CA2 /* LaunchScreen.storyboard */; };
 		2ECA9FD5231EB00800846CA2 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FD4231EB00800846CA2 /* RoundedButton.swift */; };
 		2ECA9FD8231EB04800846CA2 /* character in Resources */ = {isa = PBXBuildFile; fileRef = 2ECA9FD7231EB04800846CA2 /* character */; };
+		2ECA9FDA231EB38D00846CA2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FD9231EB38D00846CA2 /* Extensions.swift */; };
+		2ECA9FDC231EB5F700846CA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ECA9FDB231EB5F700846CA2 /* GoogleService-Info.plist */; };
+		2ECA9FDF231EBCBA00846CA2 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FDE231EBCBA00846CA2 /* DownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,12 @@
 		2ECA9FCE231EAEF900846CA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ECA9FD4231EB00800846CA2 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		2ECA9FD7231EB04800846CA2 /* character */ = {isa = PBXFileReference; lastKnownFileType = folder; path = character; sourceTree = "<group>"; };
+		2ECA9FD9231EB38D00846CA2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2ECA9FDB231EB5F700846CA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2ECA9FDE231EBCBA00846CA2 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		4CFB6AA0CF3B514292A336F1 /* Pods_BlueAR_BodyDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueAR_BodyDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B6D2967BC68740A0DB1678D /* Pods-BlueAR-BodyDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueAR-BodyDetection.debug.xcconfig"; path = "Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection.debug.xcconfig"; sourceTree = "<group>"; };
+		BFEB987BE7D08364B194083E /* Pods-BlueAR-BodyDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueAR-BodyDetection.release.xcconfig"; path = "Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185320BB31B111CA5DE526CB /* Pods_BlueAR_BodyDetection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1644EEEE793268D43342B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CFB6AA0CF3B514292A336F1 /* Pods_BlueAR_BodyDetection.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2ECA9FB4231EAEF800846CA2 = {
 			isa = PBXGroup;
 			children = (
 				2ECA9FBF231EAEF800846CA2 /* BlueAR-BodyDetection */,
 				2ECA9FBE231EAEF800846CA2 /* Products */,
+				7509C491449AF198ACED55EC /* Pods */,
+				1B1644EEEE793268D43342B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +79,7 @@
 		2ECA9FBF231EAEF800846CA2 /* BlueAR-BodyDetection */ = {
 			isa = PBXGroup;
 			children = (
+				2ECA9FDD231EBC9800846CA2 /* Utils */,
 				2ECA9FD6231EB02000846CA2 /* CustomControls */,
 				2ECA9FD7231EB04800846CA2 /* character */,
 				2ECA9FC9231EAEF900846CA2 /* Assets.xcassets */,
@@ -66,6 +88,7 @@
 				2ECA9FC6231EAEF800846CA2 /* Main.storyboard */,
 				2ECA9FCB231EAEF900846CA2 /* LaunchScreen.storyboard */,
 				2ECA9FCE231EAEF900846CA2 /* Info.plist */,
+				2ECA9FDB231EB5F700846CA2 /* GoogleService-Info.plist */,
 			);
 			path = "BlueAR-BodyDetection";
 			sourceTree = "<group>";
@@ -78,6 +101,24 @@
 			path = CustomControls;
 			sourceTree = "<group>";
 		};
+		2ECA9FDD231EBC9800846CA2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2ECA9FD9231EB38D00846CA2 /* Extensions.swift */,
+				2ECA9FDE231EBCBA00846CA2 /* DownloadManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7509C491449AF198ACED55EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B6D2967BC68740A0DB1678D /* Pods-BlueAR-BodyDetection.debug.xcconfig */,
+				BFEB987BE7D08364B194083E /* Pods-BlueAR-BodyDetection.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2ECA9FD1231EAEF900846CA2 /* Build configuration list for PBXNativeTarget "BlueAR-BodyDetection" */;
 			buildPhases = (
+				02B16D16E0A4B116C1F1150E /* [CP] Check Pods Manifest.lock */,
 				2ECA9FB9231EAEF800846CA2 /* Sources */,
 				2ECA9FBA231EAEF800846CA2 /* Frameworks */,
 				2ECA9FBB231EAEF800846CA2 /* Resources */,
+				E958F8155B414494D9A8C110 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +181,7 @@
 			files = (
 				2ECA9FCD231EAEF900846CA2 /* LaunchScreen.storyboard in Resources */,
 				2ECA9FCA231EAEF900846CA2 /* Assets.xcassets in Resources */,
+				2ECA9FDC231EB5F700846CA2 /* GoogleService-Info.plist in Resources */,
 				2ECA9FD8231EB04800846CA2 /* character in Resources */,
 				2ECA9FC8231EAEF800846CA2 /* Main.storyboard in Resources */,
 			);
@@ -145,13 +189,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02B16D16E0A4B116C1F1150E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlueAR-BodyDetection-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E958F8155B414494D9A8C110 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2ECA9FB9231EAEF800846CA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2ECA9FC3231EAEF800846CA2 /* ViewController.swift in Sources */,
+				2ECA9FDF231EBCBA00846CA2 /* DownloadManager.swift in Sources */,
 				2ECA9FD5231EB00800846CA2 /* RoundedButton.swift in Sources */,
+				2ECA9FDA231EB38D00846CA2 /* Extensions.swift in Sources */,
 				2ECA9FC1231EAEF800846CA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +382,7 @@
 		};
 		2ECA9FD2231EAEF900846CA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6D2967BC68740A0DB1678D /* Pods-BlueAR-BodyDetection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +401,7 @@
 		};
 		2ECA9FD3231EAEF900846CA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFEB987BE7D08364B194083E /* Pods-BlueAR-BodyDetection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
