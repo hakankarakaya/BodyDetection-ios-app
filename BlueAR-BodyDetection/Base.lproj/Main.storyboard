@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Wm-9j-31k">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ARView-->
+        <scene sceneID="0F1-Hm-AZ4">
+            <objects>
+                <viewController id="1Wm-9j-31k" userLabel="ARView" customClass="ViewController" customModule="BlueAR_BodyDetection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jfG-GL-oG0" userLabel="ARView" customClass="ARView" customModule="RealityKit">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-4U-fsr" customClass="RoundedButton" customModule="BlueAR_BodyDetection" customModuleProvider="target">
+                                <rect key="frame" x="127" y="788" width="160" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="2k7-jJ-odj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="13" minY="8" maxX="13" maxY="8"/>
+                                <state key="normal" title="Start Capturing"/>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="1Wm-9j-31k" eventType="touchUpInside" id="wYd-zs-mvv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fb-C5-lm8" customClass="RoundedButton" customModule="BlueAR_BodyDetection" customModuleProvider="target">
+                                <rect key="frame" x="127" y="746" width="160" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="13" minY="8" maxX="13" maxY="8"/>
+                                <state key="normal" title="Load Capture"/>
+                                <connections>
+                                    <action selector="loadCaptureButtonTapped:" destination="1Wm-9j-31k" eventType="touchUpInside" id="F2w-nw-LsV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="pSz-OF-LCu" firstAttribute="bottom" secondItem="aaZ-4U-fsr" secondAttribute="bottom" constant="40" id="mkS-So-Dtd"/>
+                            <constraint firstItem="aaZ-4U-fsr" firstAttribute="centerX" secondItem="jfG-GL-oG0" secondAttribute="centerX" id="ot2-Vw-HFl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pSz-OF-LCu"/>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="jfG-GL-oG0" id="2hN-00-LYH"/>
+                        <outlet property="captureButton" destination="aaZ-4U-fsr" id="dQt-wm-plC"/>
+                        <outlet property="loadCaptureButton" destination="0fb-C5-lm8" id="Wbf-74-Rk6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNg-7F-mpL" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="61"/>
+        </scene>
+    </scenes>
+</document>
