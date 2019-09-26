@@ -164,12 +164,33 @@ class ViewController: UIViewController, ARSessionDelegate {
     
     func saveCapturedData() {
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: capturedAnchorDataArray, requiringSecureCoding: true)
-            try data.write(to: self.mapSaveURL, options: [.noFileProtection])
-            DispatchQueue.main.async {
-                self.loadCaptureButton.isEnabled = true
-                // Share captured data
-                self.shareCapturedDataFile()
+//            let data = try NSKeyedArchiver.archivedData(withRootObject: capturedAnchorDataArray, requiringSecureCoding: true)
+//            try data.write(to: self.mapSaveURL, options: [.noFileProtection])
+//            DispatchQueue.main.async {
+//                self.loadCaptureButton.isEnabled = true
+//                // Share captured data
+//                self.shareCapturedDataFile()
+//            }
+            
+            arView.session.getCurrentWorldMap { worldMap, error in
+                guard let map = worldMap
+                    else { self.showAlert(title: "Can't get current world map", message: error!.localizedDescription); return }
+                
+                // Add a snapshot image indicating where the map was captured.
+                guard let snapshotAnchor = SnapshotAnchor(capturing: self.arView)
+                    else { fatalError("Can't take snapshot") }
+                map.anchors.append(snapshotAnchor)
+                
+                do {
+                    let data = try NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)
+                    try data.write(to: self.mapSaveURL, options: [.atomic])
+                    DispatchQueue.main.async {
+                        self.loadCaptureButton.isHidden = false
+                        self.loadCaptureButton.isEnabled = true
+                    }
+                } catch {
+                    fatalError("Can't save map: \(error.localizedDescription)")
+                }
             }
         } catch {
             print("Can't save map: \(error.localizedDescription)")
@@ -295,3 +316,40 @@ class ViewController: UIViewController, ARSessionDelegate {
         })
     }
 }
+
+extension UIViewController {
+    func showAlert(title: String,
+                   message: String,
+                   buttonTitle: String = "OK",
+                   showCancel: Bool = false,
+                   buttonHandler: ((UIAlertAction) -> Void)? = nil) {
+        print(title + "\n" + message)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: buttonHandler))
+        if showCancel {
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        }
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension CGImagePropertyOrientation {
+    /// Preferred image presentation orientation respecting the native sensor orientation of iOS device camera.
+    init(cameraOrientation: UIDeviceOrientation) {
+        switch cameraOrientation {
+        case .portrait:
+            self = .right
+        case .portraitUpsideDown:
+            self = .left
+        case .landscapeLeft:
+            self = .up
+        case .landscapeRight:
+            self = .down
+        default:
+            self = .right
+        }
+    }
+}
+

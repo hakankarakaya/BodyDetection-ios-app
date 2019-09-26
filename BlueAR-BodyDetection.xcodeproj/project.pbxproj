@@ -18,6 +18,7 @@
 		2ECA9FDA231EB38D00846CA2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FD9231EB38D00846CA2 /* Extensions.swift */; };
 		2ECA9FDC231EB5F700846CA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ECA9FDB231EB5F700846CA2 /* GoogleService-Info.plist */; };
 		2ECA9FDF231EBCBA00846CA2 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECA9FDE231EBCBA00846CA2 /* DownloadManager.swift */; };
+		FFF122D5233CEE03004148A8 /* SnapshotAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF122D4233CEE03004148A8 /* SnapshotAnchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4CFB6AA0CF3B514292A336F1 /* Pods_BlueAR_BodyDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueAR_BodyDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B6D2967BC68740A0DB1678D /* Pods-BlueAR-BodyDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueAR-BodyDetection.debug.xcconfig"; path = "Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection.debug.xcconfig"; sourceTree = "<group>"; };
 		BFEB987BE7D08364B194083E /* Pods-BlueAR-BodyDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueAR-BodyDetection.release.xcconfig"; path = "Target Support Files/Pods-BlueAR-BodyDetection/Pods-BlueAR-BodyDetection.release.xcconfig"; sourceTree = "<group>"; };
+		FFF122D4233CEE03004148A8 /* SnapshotAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotAnchor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				2ECA9FCB231EAEF900846CA2 /* LaunchScreen.storyboard */,
 				2ECA9FCE231EAEF900846CA2 /* Info.plist */,
 				2ECA9FDB231EB5F700846CA2 /* GoogleService-Info.plist */,
+				FFF122D4233CEE03004148A8 /* SnapshotAnchor.swift */,
 			);
 			path = "BlueAR-BodyDetection";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				2ECA9FDF231EBCBA00846CA2 /* DownloadManager.swift in Sources */,
 				2ECA9FD5231EB00800846CA2 /* RoundedButton.swift in Sources */,
 				2ECA9FDA231EB38D00846CA2 /* Extensions.swift in Sources */,
+				FFF122D5233CEE03004148A8 /* SnapshotAnchor.swift in Sources */,
 				2ECA9FC1231EAEF800846CA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,13 +390,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BS488Y298Y;
+				DEVELOPMENT_TEAM = T9ZC4UE5AZ;
 				INFOPLIST_FILE = "BlueAR-BodyDetection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.blueeye.system;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebit.deneme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -405,13 +409,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BS488Y298Y;
+				DEVELOPMENT_TEAM = T9ZC4UE5AZ;
 				INFOPLIST_FILE = "BlueAR-BodyDetection/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.blueeye.system;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sebit.deneme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
